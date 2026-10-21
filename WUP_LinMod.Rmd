@@ -69,16 +69,28 @@ newData=data.frame(wt=3.050, disp=122)
 print(predict(model1,newData,interval='predict'))
 ```
 
-
 # Model 2:
 
+
  mpg (miles per gallon) is the response (Y)
- wt (wt) is the predictor (X)
+ disp (disp) is the predictor (X)
 
 ## data summary
 ### graphical summary
 
+```{r}
+plot(mpg~disp,data=mtcars,pch=19)
+grid()
+```
+
+As shown in the scatterplot above mpg of a car decreases as disp increases.
+
 ### numerical summary
+
+```{r}
+cor(mtcars$mpg,mtcars$wt)
+```
+For every additional inch of displacement you add to a car you lose about.85 mpg.
 
 ### model summary
 
@@ -87,7 +99,6 @@ print(predict(model1,newData,interval='predict'))
 model2 <- lm(mpg ~ disp, data = mtcars)
 summary(model2)
 ```
-### predicted mpg 
 
 # Model 3 :
 
