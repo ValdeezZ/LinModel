@@ -110,7 +110,11 @@ summary(model2)
 ```{r}
 plot(mpg ~ wt+disp, data = mtcars)
 ```
+
+As shown in the models above as weight in tons and displacement in inches increases in a car miles per gallon decreases.
+
 ### numerical summary
+No numerical summary for model 3; two regressors
 
 ### model summary
 model3= lm(mpg ~ wt+disp, data = mtcars)
@@ -120,34 +124,25 @@ model summary (coefficients, R², etc.), summarize the fit
 model3= lm(mpg ~ wt+disp, data = mtcars)
 summary(model3)
 ```
- mpg (miles per gallon) is the response (Y)
- wt (wt) and displacement (disp) are the predictors (X's)
 
-## data summary
-
-### graphical summary
-```{r}
-plot(mpg ~ wt+disp, data=mtcars)
-```
-### numerical summary
-
-### model summary
 
 # anova: compare models 2 and 3
+
+
 
 model3 <- lm(mpg ~ wt+disp, data = mtcars)
 
 model summary (coefficients, R², etc.)
-
-### predicted mpg
 
 ```{r}
 summary(model3)
 ```
 
 ```{r}
-anova_result <- anova(model1, model3)
+anova_result <- anova(model2, model3)
 print(anova_result)
 ```
 
 # Discussion and Conculsions
+
+Based on the linear models comparing the mpg a car gets based on how much they weigh in tons and how many inches of displacement the motor has we can conclude that per increase in both variables the miles per gallong of whatever given car decreases. 
