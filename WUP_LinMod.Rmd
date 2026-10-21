@@ -1,6 +1,6 @@
 ---
 title: "Linear Model with Prediction"
-author: "Dr. J"
+author: "Andres Valdez"
 date: "`r Sys.Date()`"
 output: html_document
 ---
@@ -8,11 +8,11 @@ output: html_document
 This project is an exploration of linear models. Models are estimated by linear regression.  The data set is from Motor Trend magazine.
 
 The assignment is based on estimation of 3 models:
-1. mpg as a function of cyl
+1. mpg as a function of wt
 2. mpg as a function of disp
-3  mpg as a function of both cyl and disp
+3  mpg as a function of both wt and disp
 
-Complete a linear model with data description, a model fit a, and a prediction of mpg based on weigth of 3.050 lbs, with a displacement of 122 cubic inches (this is 2.5 L).
+Complete a linear model with data description, a model fit a, and a prediction of mpg based on weigth of 3050 lbs, with a displacement of 122 cubic inches (this is 2.5 L).
 
 use an anova to compare model 2 with model 3
 
@@ -24,6 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 data(mtcars)
 ```
+
 
 # View first 6 rows and summary
 ```{r}
@@ -37,20 +38,37 @@ head(mtcars)
 ## data summary
 ### graphical summary
 
+```{r}
+plot(mpg~wt,data=mtcars,pch=19)
+grid()
+```
+
+The scatterplot above shows that as the weight of a car increases the miles per gallon decreases.
+
 ### numerical summary
+
+```{r}
+cor(mtcars$mpg,mtcars$wt)
+```
+
+For every ton in weight you add to the car you lose about .87 mpg.
 
 ### model summary
 
+
 ```{r}
 model1 <- lm(mpg ~ wt, data = mtcars)
+
 summary(model1)
-```
-```{r}
-newData = data.frame(wt=3.050, disp=122)
-print(predict(model1, newData, interval = 'predict'))
 ```
 
 ### predicted mpg
+
+```{r}
+newData=data.frame(wt=3.050, disp=122)
+print(predict(model1,newData,interval='predict'))
+```
+
 
 # Model 2:
 
